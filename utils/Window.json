@@ -1,0 +1,51 @@
+{
+  "Regions": [
+    {
+      "name": "RootScreen",
+      "states": [
+        "InGame"
+      ]
+    },
+    {
+      "name": "Ice",
+      "width": 578,
+      "height": 461,
+      "states": [
+        "House",
+        "Long"
+      ]
+    },
+    {
+      "name": "Long_House",
+      "states": [
+        "Long_House"
+      ]
+    }
+  ],
+  "States": [
+    {
+      "name": "InGame",
+      "template_image": "../images/RootScreen_Template.png",
+      "regions": [
+        "Ice"
+      ]
+    },
+    {
+      "name": "House",
+      "template_image": "../images/House_Template.png",
+      "regions": null
+    },
+    {
+      "name": "Long",
+      "template_image": "../images/Long_Template.png",
+      "regions": [
+        "Long_House"
+      ]
+    },
+    {
+      "name": "Long_House",
+      "template_image": "../images/Long_House_Template.png",
+      "regions": null
+    }
+  ]
+}

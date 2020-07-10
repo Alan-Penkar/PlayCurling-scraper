@@ -1,0 +1,73 @@
+{
+  "Regions": [
+    {
+      "name": "RootScreen",
+      "states": [
+        "InGame"
+      ]
+    },
+    {
+      "name": "Ice",
+      "states": [
+        "House",
+        "Long"
+      ]
+    },
+    {
+      "name": "Long_House",
+      "states": [
+        "Long_House"
+      ]
+    },
+    {
+      "name": "Score",
+      "states": [
+        "Score"
+      ]
+    },
+    {
+      "name": "Stones_Remaining",
+      "states": [
+        "Stones_Remaining"
+      ]
+    }
+  ],
+  "States": [
+    {
+      "name": "InGame",
+      "template_image": "images/RootScreen_Template.png",
+      "regions": [
+        "Ice",
+        "Score",
+        "Stones_Remaining"
+      ]
+    },
+    {
+      "name": "House",
+      "template_image": "images/House_Template.png",
+      "regions": null
+    },
+    {
+      "name": "Long",
+      "template_image": "images/Long_Template.png",
+      "regions": [
+        "Long_House"
+      ]
+    },
+    {
+      "name": "Long_House",
+      "template_image": "images/Long_House_Template.png",
+      "regions": null
+    },
+    {
+      "name": "Score",
+      "template_image": "images/Score_Template.png",
+      "regions": null
+    },
+    {
+      "name": "Stones_Remaining",
+      "template_image": "images/Stones_Remaining_Template.png",
+      "regions": null
+    }
+  ]
+}
