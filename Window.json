@@ -30,6 +30,12 @@
       "states": [
         "Stones_Remaining"
       ]
+    },
+    {
+      "name": "Players",
+      "states": [
+        "Players"
+      ]
     }
   ],
   "States": [
@@ -39,7 +45,8 @@
       "regions": [
         "Ice",
         "Score",
-        "Stones_Remaining"
+        "Stones_Remaining",
+        "Players"
       ]
     },
     {
@@ -67,6 +74,11 @@
     {
       "name": "Stones_Remaining",
       "template_image": "images/Stones_Remaining_Template.png",
+      "regions": null
+    },
+    {
+      "name": "Players",
+      "template_image": "images/Players_Template.png",
       "regions": null
     }
   ]
