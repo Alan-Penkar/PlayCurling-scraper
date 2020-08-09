@@ -81,5 +81,13 @@
       "template_image": "images/Players_Template.png",
       "regions": null
     }
+  ],
+  "Objects": [
+    {
+      "name": "stone_longview",
+      "image_path": "images/Long/4xclean",
+      "annotation_filepath": "annotations/Long/Long4x_all.json",
+      "detector_filepath": "detectors/stone_longview.svm"
+    }
   ]
 }

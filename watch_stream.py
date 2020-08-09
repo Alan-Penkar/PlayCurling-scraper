@@ -45,7 +45,11 @@ class StreamWriter(object):
     def write(self):
         pass
 
-
+#
+#
+# This is the main method!
+#
+#
 def watch_stream(stream_id, seconds, config_path):
     starttime = time.time()
     stream = Stream(stream_id, config_path)

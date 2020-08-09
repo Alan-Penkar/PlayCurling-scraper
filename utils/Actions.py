@@ -1,6 +1,8 @@
 import json
 from json_minify import json_minify
+from os.path import exists
 import cv2
+import dlib
 try:
     from .Objects import Region, State, DetectableObjects
 except:
@@ -9,6 +11,12 @@ try:
     from .parsing_helpers import build_instances, id_root_regions
 except:
     from parsing_helpers import build_instances, id_root_regions
+
+try:
+    from .detection_helpers import parse_labelbox_boxes
+except:
+    from detection_helpers import parse_labelbox_boxes
+
 
 class Window(object):
     """
@@ -47,7 +55,35 @@ class Window(object):
         for region_name, image in self.active_images.items():
             cv2.imshow(region_name, image)
 
+###
+#
+# Detector Stuff
+#
+###
+
+def train_detectors(filename, force=True):
+    conf = json.loads(json_minify(open(filename).read()))
+    train_options = dlib.simple_object_detector_training_options()
+    validate_detectable_conf(conf)
+    for detectable in conf.get("Objects", []):
+        if not force:
+            detector_path = detectable['detector_filepath']
+            if exists(detector_path):
+                continue
+        images, box_dict = parse_labelbox_boxes(detectable["image_path"], detectable["annotation_filepath"], [detectable["name"]])
+        detector = dlib.train_simple_object_detector(images, box_dict.get(detectable.get("name")), train_options)
+        detector.save(detectable['detector_filepath'])
+    return True
+
+REQUIRED_DETECTABLE_FIELDS = ["name", "image_path", "annotation_filepath", "detector_filepath"]
+def validate_detectable_conf(conf):
+    for detectable in conf.get("Objects", []):
+        for field in REQUIRED_DETECTABLE_FIELDS:
+            if detectable.get(field) is None:
+                raise ValueError(f"{field} is a required field for an Object")
+
 
 if __name__=='__main__':
     o = Window.create_from_config_file('Window.json')
+    #d = train_detectors('Window.json')
     print("None")
